@@ -1,0 +1,6 @@
+- name: Configure firewall
+  ufw: rule=allow port={{ item }} proto=tcp
+  with_items: "{{ ufw_allowed_ports }}"
+
+- name: Enable ufw
+  action: shell echo 'y' | ufw enable
